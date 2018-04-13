@@ -4,13 +4,25 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/*
- *  X의 전체 조합의 수는 X의 부분들 X'의 전체 조합의 수의 합과 같다.
- *  ex) 5의 전체 가능한 조합의 수는 = 
- *  	(5-1) 한 4의 전체 조합의 수  + (5-2) 한 3의 전체 조합의 수 + (5-3) 한 2의 전체 조합의 수
+/* 
+ *  **********************************************************
+ *
+ *   Written By k-carpediem0212 (k.carpediem0212@gmail.com)
+ *   
+ *  **********************************************************
+ *
+ * 	정수 X를 1,2,3의 합으로 나타내는 방법은
+ * 	X에서 1,2,3을 뺀 X'를 1,2,3의 합으로 나타내는 방법의 합과 같다.
+ *
+ *	도출된 점화식은
+ *		X = X'의 합
  *  
+ *  
+ *  ---------------------------
  *  공간복잡도 : O(n)
  *  시간복잡도 : 
+ *  ---------------------------
+ *  
  */
 public class Q9095 {
 	private int cache[];
@@ -18,6 +30,7 @@ public class Q9095 {
 	public Q9095(int num) {
 		// 인덱스와 값을 맞춤으로써의 편의를 위해 +1 크기의 배열 생성
 		this.cache = new int[num + 1];
+		cache[0] = 1;
 		
 		System.out.println(comb(num));
 	}
@@ -25,7 +38,6 @@ public class Q9095 {
 	public int comb(int num) {
 		//BASE-CASE
 		if(num == 0) {
-			cache[0] = 1;
 			return cache[0];
 		}
 		
