@@ -4,58 +4,69 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/*
- *  X의 최소 연산의 수는 X의 부분 연산의 결과인 X'의 최소 연산의 수  + 1과 같다.
- *  	ex) 10의 최소 연산의 수는  MIN(5의 최소 연산의 수, 9의 최소 연산의 수)
+/* 
+ *  **********************************************************
+ *
+ *   Written By k-carpediem0212 (k.carpediem0212@gmail.com)
  *   
+ *  **********************************************************
+ *
+ *	------------------------------------------------
+ *	조건 :
+ *		연산 1. X가 3으로 나누어 떨어지면, 3으로 나눈다.
+ *		연산 2. X가 2로 나누어 떨어지면, 2로 나눈다.
+ *		연산 3. 1을 뺀다.
+ *	------------------------------------------------
+ *
+ *	주어진 정수를 1로 만드는 최소 연산의 수 X는
+ *	주어진 정수에 연산 1,2,3을 하여 얻는 수의 최소 연산의 수 X' + 1과 같다.
+ *	
+ *	도출된 점화식 : X = X' + 1 (여기서 X'는 X를 통해 얻을 수 있는 부분의 최소)
+ *  
+ *  ---------------------------
  *  공간복잡도 : O(n)
  *  시간복잡도 : 
+ *  ---------------------------
  */
 public class Q1463 {
 	private int cache[];
 	
 	public Q1463(int num) {
-		// 인덱스와 값을 맞춤으로써의 편의를 위해 +1 크기의 배열 생성
+		// 편의를 위해 배열 크기를 + 1로 생성.
 		this.cache = new int[num + 1];
-		
+
 		System.out.println(operate(num));
 	}
 	
 	public int operate(int num) {
 		// BASE-CASE 1
-		if(num == 1) {
-			return cache[0];
-		} else if(num == 2) {
-			cache[2] = 1;
-			return 1;
-		} else if(num == 3) {
-			cache[3] = 1;
+		// 1은 연산이 필요 하지 않으므로 0, 2와 3은 1번의 연산으로 가능하기 때문에 1을 Return
+		if (num == 1) {
+			return 0;
+		} else if(num == 2 || num == 3) {
 			return 1;
 		}
-		
 		
 		//Memorization
 		if(cache[num] != 0) {
 			return cache[num];
 		}
 		
-		int ret = Integer.MAX_VALUE;
-		// 연산 1. num / 3 
+		// 연산 3
+		int ret = operate(num - 1);
+		
+		// 연산 1이 가능할 경우 
 		if((num % 3) == 0) {
 			ret = Integer.min(ret, operate(num / 3));
 		}
 		
-		// 연산 1. num / 2
+		// 연산 2가 가능할 경우
 		if((num % 2) == 0) {
 			ret = Integer.min(ret, operate(num / 2));
 		}
 		
-		// 연산 1. num - 1
-		ret = Integer.min(ret, operate(num - 1));
-		
-		// num의 경우의 수 = 부분 + 1 ( 연산 1,2,3 중 하나이기 때문)
-		// => ret를 1 증가.
-		ret++;
+		// 점화식 
+		ret = ret + 1;
 		cache[num] = ret;
 		
 		return ret;
