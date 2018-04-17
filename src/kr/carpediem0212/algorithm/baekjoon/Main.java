@@ -39,35 +39,6 @@ public class Main {
 		return cache[numOfWine];
 	}
 
-	/*
-	public void drink() {
-		if(numOfWine == 1) {
-			//return wines[0];
-			System.out.println(wines[0]);
-		} else if (numOfWine == 2) {
-			//return wines[0] + wines[1];
-			System.out.println(wines[1]);
-		}
-		
-		cache[0][0] = wines[0];
-		cache[1][0] = wines[0];
-		cache[0][1] = wines[0] + wines[1];
-		cache[1][1] = wines[1];
-		
-		int max = 0;
-		for(int i = 2; i < numOfWine; i++) {
-			cache[0][i] = wines[i] + cache[1][i - 1];
-			cache[1][i] = wines[i] + Integer.max(cache[0][i - 2], cache[1][i - 2]);
-			
-			int cur = Integer.max(cache[0][i], cache[1][i]);
-			if (max < cur) {
-				max = cur;
-			}
-		}
-		
-		System.out.println(max);
-	}*/
-
 	public static void main(String[] args) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
