@@ -40,7 +40,6 @@ import java.io.InputStreamReader;
  *  시간복잡도 : O(n)
  *  ---------------------------
  */
-
 public class Q10844 {
 	private final int MOD = 1000000000;
 	
