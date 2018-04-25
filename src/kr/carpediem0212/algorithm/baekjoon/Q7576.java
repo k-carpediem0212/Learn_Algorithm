@@ -5,15 +5,38 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
-
-public class Main {
+/* 
+ *  **********************************************************
+ *
+ *   Written By k-carpediem0212 (k.carpediem0212@gmail.com)
+ *   
+ *  **********************************************************
+ *	
+ *	!!추후 리팩토링 필요 / 시간이 너무 오래 걸림
+ *
+ *	------------------------------------------------
+ *	조건 :
+ *	------------------------------------------------
+ *	
+ *	BFS로 해결
+ *	처음 1인 노드들을 먼저 큐에 삽입하여 초기화 하고
+ *	BFS 수행
+ *	
+ *  
+ *  ---------------------------
+ *  공간복잡도 : O(n^2)
+ *  시간복잡도 : 
+ *  ---------------------------
+ *  
+ */
+public class Q7576 {
 	private int m;
 	private int n;
 	private int[][] box;
 	private int[] coordinateX = { 0, 0, 1, -1 };
 	private int[] coordinateY = { 1, -1, 0, 0 };
 
-	public Main(int m, int n, int[][] box) {
+	public Q7576(int m, int n, int[][] box) {
 		this.m = m;
 		this.n = n;
 		this.box = box;
@@ -94,7 +117,7 @@ public class Main {
 				}
 			}
 
-			Main _m = new Main(m, n, box);
+			Q7576 _m = new Q7576(m, n, box);
 			System.out.println(_m.ripen());
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
