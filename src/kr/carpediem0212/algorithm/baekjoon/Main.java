@@ -5,53 +5,52 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-/*
- *  10 + 9 + 8 + 7 + 5 + 4 + 3 + 2 + 1
- *  0  1  2  3  4  5  6  7  8  9
- *  1  1  1  1  1  1  1  1  1  1
- *  1  2  3  4  5  6  7  8  9  10
- *  1  3  6  10 15 21 28 36 45 55
- *  1  4  10 20 35 46 74 110 155 210
- * 
- */
-
 public class Main {
-	private final int MOD = 10007;
+	private int n;
+	private int k;
+	private int[] coins;
 	private int[] cache;
-	private int num;
-	
-	public Main(int num) {
-		this.num = num;
-		this.cache = new int[10];
-	}
-	
-	public int increase() {
-		Arrays.fill(cache, 1);
+
+	public Main(int n, int k, int[] coins) {
+		this.n = n;
+		this.k = k;
+		this.coins = coins;
+		this.cache = new int[k + 1];
 		
-		for (int i = 2; i <= num; i++) {
-			for( int j = 1; j <= 9; j++) {
-				cache[j] = (cache[j - 1] + cache[j]) % MOD;
+		Arrays.sort(coins);
+		Arrays.fill(cache, 100001);
+		cache[0] = 0;
+		
+	}
+
+	public int exchange() {
+		for (int i = 0; i < n; i++) {
+			for (int j = coins[i]; j <= k; j++) {
+				cache[j] = Integer.min(cache[j], cache[j - coins[i]] + 1);
 			}
 		}
 		
-		int sum = 0;
-		for(int i = 0; i < 10; i++) {
-			sum += cache[i] % MOD;
+		if(cache[k] == 100001) {
+			return -1;
 		}
 		
-		//System.out.println(Arrays.toString(cache));
-		return sum % MOD;
+		return cache[k];
 	}
-	
+
 	public static void main(String[] args) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
+
 		try {
-			int num = Integer.parseInt(br.readLine().trim());
+			String[] inputDatas = br.readLine().trim().split("\\s+");
+			int n = Integer.parseInt(inputDatas[0]);
+			int k = Integer.parseInt(inputDatas[1]);
+			int[] coins = new int[n];
+			for (int i = 0; i < n; i++) {
+				coins[i] = Integer.parseInt(br.readLine().trim());
+			}
 			
-			Main m = new Main(num);
-			System.out.println(m.increase());
-			
+			Main m = new Main(n, k, coins);
+			System.out.println(m.exchange());
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
