@@ -20,7 +20,6 @@ public class Main {
 		Arrays.sort(coins);
 		Arrays.fill(cache, 100001);
 		cache[0] = 0;
-		
 	}
 
 	public int exchange() {
