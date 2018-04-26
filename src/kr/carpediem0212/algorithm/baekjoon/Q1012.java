@@ -4,7 +4,28 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+/* 
+ *  **********************************************************
+ *
+ *   Written By k-carpediem0212 (k.carpediem0212@gmail.com)
+ *   
+ *  **********************************************************
+ *
+ *	------------------------------------------------
+ *	조건 :
+ *		조건 1. 지렁이는 인접한 다른 배추로 이동할 수 있어, 그 배추들 역시 해충으로부터 보호받을 수 있다.
+ *	------------------------------------------------
+ *	
+ *	farm 배열을 순회하면서 1인 값을 찾고
+ *	그 값을 기준으로 dfs 수행 을 반복하여
+ *	전체 지렁이 개수를 구한다.
+ *
+ *  ---------------------------
+ *  공간복잡도 : O(1)
+ *  시간복잡도 : O(n^3)
+ *  ---------------------------
+ */
+public class Q1012 {
 	private static int m;
 	private static int n;
 	private static int numOfPlant;
@@ -64,7 +85,7 @@ public class Main {
 					farm[y][x] = 1;
 				}
 
-				System.out.println(Main.put());
+				System.out.println(Q1012.put());
 			}
 
 		} catch (NumberFormatException e) {
