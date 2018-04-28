@@ -6,32 +6,30 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	private int n;
-	private int m;
-	private int[][] rooms;
-	private int[][] cache;
+	public Main() {
 
-	public Main(int n, int m, int[][] rooms) {
-		this.n = n;
-		this.m = m;
-		this.rooms = rooms;
-		this.cache = new int[n + 1][m + 1];
 	}
 
-	public int escape() {
-		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= m; j++) {
-				if (i == 1) {
-					cache[i][j] = rooms[i - 1][j - 1] + cache[i][j - 1];
-				} else if (j == 1) {
-					cache[i][j] = rooms[i - 1][j - 1] + cache[i - 1][j];
-				} else {
-					cache[i][j] = rooms[i - 1][j - 1] + Integer.max(cache[i][j - 1], cache[i - 1][j]);
-				}
+	public int tiling(int n) {
+		if ((n % 2) != 0) {
+			return 0;
+		} else if (n == 0) {
+			return 1;
+		}
+
+		int[] cache = new int[n + 1];
+		cache[0] = 1;
+		cache[2] = 3;
+
+		for (int i = 4; i <= n; i = i + 2) {
+			cache[i] = cache[i - 2] * 3;
+			
+			for (int j = 4; j <= i; j = j + 2) {
+				cache[i] += cache[i - j] * 2;
 			}
 		}
 
-		return cache[n][m];
+		return cache[n];
 	}
 
 	public static void main(String[] args) {
@@ -39,19 +37,8 @@ public class Main {
 		try {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int n = Integer.parseInt(st.nextToken());
-			int m = Integer.parseInt(st.nextToken());
-			int[][] rooms = new int[n][m];
-
-			for (int i = 0; i < n; i++) {
-				st = new StringTokenizer(br.readLine());
-				for (int j = 0; j < m; j++) {
-					rooms[i][j] = Integer.parseInt(st.nextToken());
-				}
-			}
-
-			Main _m = new Main(n, m, rooms);
-			System.out.println(_m.escape());
-
+			Main m = new Main();
+			System.out.println(m.tiling(n));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
