@@ -12,7 +12,28 @@ import java.util.StringTokenizer;
 
 import javax.management.Query;
 
-public class Main {
+/* 
+ *  **********************************************************
+ *
+ *   Written By k-carpediem0212 (k.carpediem0212@gmail.com)
+ *   
+ *  **********************************************************
+ *	
+ *	------------------------------------------------
+ *	조건 :
+ *	------------------------------------------------
+ *	
+ *	BFS로 해결
+ *	처음 1인 노드들을 먼저 큐에 삽입하여 초기화 하고
+ *	BFS 수행
+ *	BFS 수행하면서, 방문한 집은 '0'으로 값을 변경
+ *  
+ *  ---------------------------
+ *  공간복잡도 : O(n)
+ *  시간복잡도 : O(n^3)? 시간 복잡도 계산 어려움.
+ *  ---------------------------
+ */
+public class Q2667 {
 	private int size;
 	private char[][] map;
 	private int[] dy = { 0, 0, 1, -1 };
@@ -20,7 +41,7 @@ public class Main {
 	private Queue<Pair> queue;
 	private LinkedList<Integer> results;
 
-	public Main(int size, char[][] map) {
+	public Q2667(int size, char[][] map) {
 		this.size = size;
 		this.map = map;
 		this.queue = new LinkedList<>();
@@ -98,7 +119,7 @@ public class Main {
 				map[i] = st.nextToken().toCharArray();
 			}
 
-			Main m = new Main(size, map);
+			Q2667 m = new Q2667(size, map);
 			m.grouping();
 		} catch (IOException e) {
 			e.printStackTrace();
