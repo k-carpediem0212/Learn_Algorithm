@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Q1890 {
 	private int[][] map;
 	private int n;
 	private long[][] cache;
 
-	public Main(int n, int[][] map) {
+	public Q1890(int n, int[][] map) {
 		this.map = map;
 		this.n = n;
 		this.cache = new long[n][n];
@@ -54,7 +54,7 @@ public class Main {
 				}
 			}
 
-			Main m = new Main(n, map);
+			Q1890 m = new Q1890(n, map);
 			System.out.println(m.jump());
 		} catch (IOException e) {
 			e.printStackTrace();
