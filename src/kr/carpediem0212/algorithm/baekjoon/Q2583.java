@@ -8,7 +8,25 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+/* 
+ *  **********************************************************
+ *
+ *   Written By k-carpediem0212 (k.carpediem0212@gmail.com)
+ *   
+ *  **********************************************************
+ *	------------------------------------------------
+ *	조건 :
+ *	------------------------------------------------
+ *
+ *	Queue를 이용한 BFS로 해결
+ *  
+ *  ---------------------------
+ *  공간복잡도 : 
+ *  시간복잡도 : 
+ *  ---------------------------
+ *  
+ */
+public class Q2583 {
 	public static int m;
 	public static int n;
 	public static int k;
@@ -84,7 +102,7 @@ public class Main {
 				}
 			}
 
-			Main.area();
+			Q2583.area();
 
 		} catch (IOException e) {
 			e.printStackTrace();
