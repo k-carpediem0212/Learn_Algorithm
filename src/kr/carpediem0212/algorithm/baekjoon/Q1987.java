@@ -6,7 +6,27 @@ import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.StringTokenizer;
 
-public class Main {
+/* 
+ *  **********************************************************
+ *
+ *   Written By k-carpediem0212 (k.carpediem0212@gmail.com)
+ *   
+ *  **********************************************************
+ *
+ *	------------------------------------------------
+ *	조건 :
+ *	------------------------------------------------
+ *
+ *	dfs 이용
+ *	백트래킹에 대해 공부후 추가 수정 필요
+ *	현재 시간이 많이 걸림 
+ *  
+ *  ---------------------------
+ *  공간복잡도 : 
+ *  시간복잡도 : 
+ *  ---------------------------
+ */
+public class Q1987 {
 	public static int r;
 	public static int c;
 	public static char[][] board;
@@ -29,11 +49,11 @@ public class Main {
 				dfs(nextY, nextX, cnt + 1);
 			}
 		}
-		
+
 		if (cnt > max) {
 			max = cnt;
 		}
-		
+
 		isVisit.remove(board[y][x]);
 	}
 
@@ -50,7 +70,7 @@ public class Main {
 				board[i] = st.nextToken().toCharArray();
 			}
 
-			Main.dfs(0, 0, 1);
+			Q1987.dfs(0, 0, 1);
 			System.out.println(max);
 
 		} catch (IOException e) {
