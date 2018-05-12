@@ -3,10 +3,33 @@ package kr.carpediem0212.algorithm.baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+/* 
+ *  **********************************************************
+ *
+ *   Written By k-carpediem0212 (k.carpediem0212@gmail.com)
+ *   
+ *  **********************************************************
+ *
+ *	------------------------------------------------
+ *	조건 :
+ *	------------------------------------------------
+ *	
+ *	입력받은 정사각형 배열을 D라고 할때 D[i][j]를 정사각형의 우측하단이라고 가정한다.
+ *	여기서, 정사각형 한변의 길이는 D[i-1][j-1], D[i][j-1], D[i-1][j] 중 가장 작은 값 + 1이다.
+ *	(단, D[i][j] == 0 일 경우는 제외한다.)
+ *
+ *  점화식은 아래와 같다.
+ *	
+ *	D[i][j] = min(D[i - 1][j - 1], D[i - 1][j], D[i][j - 1]) + 1;
+ *
+ *  ---------------------------
+ *  공간복잡도 : O(n^2)
+ *  시간복잡도 : O(n^2)
+ *  ---------------------------
+ */
+public class Q1915 {
 	public static int n;
 	public static int m;
 	public static char[][] matrix;
