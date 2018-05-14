@@ -20,7 +20,7 @@ public class QuickSort {
 		
 		while(left < right) {
 			while((arr[left] < arr[pivot]) && (left < right)) {
-				left++;
+			left++;
 			}
 			
 			while((arr[right] >= arr[pivot]) && (left < right)) {
