@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Q1965 {
 	public static int sizeOfSequence;
 	public static int[] box;
 	public static int[] cache;

@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Q11722 {
 	public static int sizeOfSequence;
-	public static int[] box;
+	public static int[] sequence;
 	public static int[] cache;
 
 	public static void main(String[] args) {
@@ -17,12 +17,12 @@ public class Main {
 		try {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			sizeOfSequence = Integer.parseInt(st.nextToken());
-			box = new int[sizeOfSequence];
+			sequence = new int[sizeOfSequence];
 			cache = new int[sizeOfSequence];
 
 			st = new StringTokenizer(br.readLine());
 			for (int i = 0; i < sizeOfSequence; i++) {
-				box[i] = Integer.parseInt(st.nextToken());
+				sequence[i] = Integer.parseInt(st.nextToken());
 			}
 
 			cache[0] = 1;
@@ -32,7 +32,7 @@ public class Main {
 				
 				int temp = 0;
 				for(int j = 0; j < i; j++) {
-					if(box[j] < box[i]) {
+					if(sequence[j] > sequence[i]) {
 						if(temp < cache[j]) {
 							temp = cache[j];
 						}
