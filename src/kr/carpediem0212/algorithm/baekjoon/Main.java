@@ -29,7 +29,6 @@ public class Main {
 
 			int max = 1;
 			for (int i = 1; i < sizeOfSequence; i++) {
-				
 				int temp = 0;
 				for(int j = 0; j < i; j++) {
 					if(box[j] < box[i]) {
